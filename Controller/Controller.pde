@@ -1,17 +1,18 @@
-Board B=new Board(8);
+Game G;
 
 void setup(){
   size(600,710);
+  G=new Filler(8);
 }
 
 void draw(){
-  B.disp();
+  G.disp();
 }
 
 void keyPressed(){
-  B.update();
+  G.update();
 }
 
 void mousePressed(){
-  B.update();
+  G.update();
 }

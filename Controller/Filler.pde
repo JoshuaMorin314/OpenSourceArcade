@@ -1,4 +1,4 @@
-class Board{
+class Filler implements Game{
   int[][] player;
   color[][] C;  // colormap
   int size;  // number of rows/columns
@@ -13,13 +13,13 @@ class Board{
   int moves;  // number of moves left
   
   
-  Board(int cellsPerSide){
+  Filler(int cellsPerSide){
     size=cellsPerSide;
     C=new color[size][size];
-    generateBoard();
+    generate();
   }
   
-  private void generateBoard(){
+  public void generate(){
     won=-1;
     moves=difficulty;
     // generate board
@@ -58,9 +58,9 @@ class Board{
   // =>kbgcrmyw
   */
   
-  void floodFlow(color c,int i,int j){
+  private void floodFlow(color c,int i,int j){
     // recursive break
-    if(i==B.size || j==B.size){  // || i==-1 || j==-1){
+    if(i==size || j==size){  // || i==-1 || j==-1){
       return;
     }
     // update current tile (needs to be before the tests to prevent doubling back)
@@ -81,7 +81,7 @@ class Board{
     }
   }
   
-  void disp(){
+  public void disp(){
     background(bkgd);
     noStroke();
     rectMode(CORNER);
@@ -117,11 +117,11 @@ class Board{
     }
   }
   
-  void update(){
+  public void update(){
     if(won!=-1){
       if(keyPressed){
         if(key==RETURN || key==ENTER){
-          generateBoard();
+          generate();
         }else if(keyCode==ESC){
           exit();
         }
@@ -137,7 +137,7 @@ class Board{
     }
   }
   
-  void check(){
+  public void check(){
     won=1;
     for(int i=0; i<size*size; i++){
       if(c!=C[floor(i/size)][i%size]){
@@ -149,17 +149,17 @@ class Board{
     }
   }
   
-  void prt(){
+  String toString(){
+    String s="";
     for(int i=0; i<size; i++){
-      String row="";
       for(int j=0; j<size; j++){
-        row=row+" ("+hex(C[i][j],6)+") ";
-        //row=row+ ((showHex==1)?"("+hex(C[i][j],6)+")":"");
+        s=s+" ("+hex(C[i][j],6)+") ";
         if(j<size-1){
-          row=row+",";
+          s=s+",";
         }
       }
-      println(row);
+      s=s+"\n";
     }
+    return s;
   }
 }
