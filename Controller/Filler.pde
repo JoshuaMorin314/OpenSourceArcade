@@ -131,8 +131,10 @@ class Filler implements Game{
       if(mouseY>width && tc!=bkgd){
         moves--;
         c=get(mouseX,mouseY);
-        floodFlow(c,0,0);
-        check();
+        if(c!=C[0][0]){
+          floodFlow(c,0,0);
+          check();
+        }
       }
     }
   }
