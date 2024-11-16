@@ -1,0 +1,32 @@
+int x,y;
+
+void setup(){
+  size(600,600);
+}
+
+void draw(){
+  background(255);
+  fill(0,0,0);
+  //rect(mouseX - 25, 0, 100, 25);
+  
+  
+  //create the rectangle first, this will be the platform
+  float rectHeight = 20;
+  float rectWidth = 80;
+  float rectY = height - rectHeight - 10; // Position the rectangle near the bottom of the canvas
+  
+  rect(mouseX - rectWidth / 2, rectY, rectWidth, rectHeight);
+  
+  //now create a ball 
+  //has to be within the
+  
+  //make the ball bounce from side to side
+  float circleHeight = 300;
+  float circleWidth = 250;
+  circle(circleHeight, circleWidth, 10);
+}
+
+void mousePressed(){
+  x++;
+  y++;
+}
