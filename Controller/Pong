@@ -59,9 +59,18 @@ void draw(){
     xspeed *= 1.1; // Increase speed
     yspeed *= 1.1; // Increase speed
   }
-  //Create a code that takes into account the ball hitting the platform first
   
-  //Then create a counter for each time the ball and platform touch
-  //after each touch, the speed of the ball will incease
   //if the ball passes the platform, it ends!! that is it
+  if (circleY - rad > height) {
+    noLoop(); 
+    fill(0);
+    textSize(32);
+    textAlign(CENTER, CENTER);
+    text("Game Over! Score: " + score, width / 2, height / 2);
+  }
+  
+  // Display score
+  fill(0);
+  textSize(16);
+  text("Score: " + score, 10, 20);
 }
