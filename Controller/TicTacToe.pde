@@ -1,11 +1,14 @@
-// modify update
-// write display
-/*
+// player switching has bugs
+// check doesnt work
 class TicTacToe implements Game{
   int[][] board=new int[3][3];
   int[] position=new int[3];
   int currentPlayer; // player 1 and player 2
   int won=-1;
+  int margin=20;
+  int w=(width-2*margin)/3;
+  int h=(height-2*margin)/3;
+  int t=millis();
 
   public TicTacToe(){
     generate();
@@ -20,10 +23,31 @@ class TicTacToe implements Game{
     }
     currentPlayer=1;
   }
+  
+  public void update(){
+    PVector mouse=new PVector(mouseX,mouseY);
+    for(int i=0; i<3; i++){
+      for(int j=0; j<3; j++){
+        //if(0<=sq(margin+(j+0.5)*w-mouseX)+sq(margin+(i+0.5)*h-mouseY)-sq((w+h)*3/8)){
+        if(((w+h)*3/8)>=mouse.copy().dist(new PVector(margin+(0.5+i)*w,margin+(0.5+j)*h))){
+          if(board[i][j]==0){
+            board[i][j]=currentPlayer;
+            position[2]++; // adds to the number of filled spots
+            currentPlayer=(currentPlayer==1)?2:1; // switch player
+            if(position[2]<9){
+              computerPlayer(); // minmax algorithm
+            }
+          }
+          return;
+        }
+      }
+    }
+  }
 
-  public boolean update(String s){ // accepts a string designating the move the player wants to make
+/*
+  public boolean update(){
     boolean success=true; // return true by default
-    s=s.toLowerCase().strip(); // makes everything lowercase and removes any spaces at the beginning or end of the string (should be done already)
+    
     if((s.equals("select") || s.equals("s")) && 0==board[position[0]][position[1]]){ // if the input was select/s and the current position is available
       board[position[0]][position[1]]=currentPlayer; // record the current players number designation at the current board position
       position[2]++; // adds to the number of filled spots
@@ -44,9 +68,28 @@ class TicTacToe implements Game{
     }
     return success; // true if the move was successful and false if it wasn't
   }
+  */
 
   public void disp(){
-    
+    strokeWeight(5);
+    noFill();
+    int lw=9*w/10;
+    int lh=9*h/10;
+    translate(margin,margin);
+    for(int i=0; i<3; i++){
+      if(i!=0){
+        line(i*w,0,i*w,3*h);
+        line(0,i*h,3*w,i*h);
+      }
+      for(int j=0; j<3; j++){
+        if(1==board[i][j]){
+          line((0.05+i)*w,(0.05+j)*h,(0.05+i)*w+lw,(0.05+j)*h+lh);
+          line((0.05+i)*w,(0.05+j)*h+lh,(0.05+i)*w+lw,(0.05+j)*h);
+        }else if(2==board[i][j]){
+          ellipse(w/2+i*w,h/2+j*h,lw,lh);
+        }
+      }
+    }
   }
 
   public void check(){
@@ -158,39 +201,4 @@ class TicTacToe implements Game{
       return w;
     }
   }
-  
-  
-  public String toString(){
-    String s="Arcade>TicTacToe\n----------------\n";
-    for(int i=0; i<3; i++){
-      String s0="|";
-      String s1="|";
-      for(int j=0; j<3; j++){
-        String st=" ";
-        if(position[0]==i && position[1]==j){
-          st="|";
-        }
-        if(0==board[i][j]){
-          s0+=st+"  "+st+"|";
-          s1+=st+"  "+st+"|";
-        }else if(1==board[i][j]){
-          s0+=st+"\\/"+st+"|";
-          s1+=st+"/\\"+st+"|"; //weird hyperlink problem
-        }else if(2==board[i][j]){
-          s0+=st+"/\\"+st+"|"; //weird hyperlink problem
-          s1+=st+"\\/"+st+"|";
-        }
-      }
-      s+=s0+"\n"+s1+"\n----------------\n";
-    }
-    if(-1==check()) {
-      s+="It's a cat! Neither player wins.";
-    }else if(0==check()){
-      s+="type the words left, right, up, or down followed by the enter key to move to your desired spot\ntype select followed by the enter key to select a spot at which to play \nPlayer "+currentPlayer+": ";
-    }else{
-      s+= "Player "+check()+" wins!!!";
-    }
-    return s;
-  }
 }
-*/
