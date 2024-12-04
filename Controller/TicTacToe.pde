@@ -1,5 +1,6 @@
 // player switching has bugs
 // check doesnt work
+
 class TicTacToe implements Game, UIScreen{
   int[][] board=new int[3][3];
   int[] position=new int[3];
@@ -45,6 +46,7 @@ class TicTacToe implements Game, UIScreen{
   }
 
   public void disp(){
+    background(127);
     strokeWeight(5);
     noFill();
     int lw=9*w/10;
