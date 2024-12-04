@@ -1,3 +1,4 @@
+/*
 class Wordle implements Game {
   
   //create a secret word for now 
@@ -102,4 +103,5 @@ class Wordle implements Game {
     text("Game Over! The word was " + secretWord, width / 2, 450);
   }
 }
+*/
   
