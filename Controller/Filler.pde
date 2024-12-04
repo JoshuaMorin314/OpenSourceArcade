@@ -1,4 +1,4 @@
-class Filler implements Game{
+public class Filler implements Game, UIScreen{
   int[][] player;
   color[][] C;  // colormap
   int size;  // number of rows/columns
