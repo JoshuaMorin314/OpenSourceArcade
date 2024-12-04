@@ -105,6 +105,7 @@ class Asteroids implements Game {
   }
 
   public void disp() {
+    update();
     background(0, 0, 0);
 
     pushMatrix();
