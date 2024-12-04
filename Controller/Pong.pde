@@ -67,18 +67,25 @@ class Pong implements Game, UIScreen{
       yspeed *= 1.1; // Increase speed
     }
   
+  //println(circleY+","+rad+","+(circleY +rad)+","+ height);
+  println(circleY + rad > height);
     //if the ball passes the platform, it ends!! that is it
-    if (circleY - rad > height) {
-      noLoop(); 
+    if (circleY + rad > height) {
       fill(0);
       textSize(32);
       textAlign(CENTER, CENTER);
       text("Game Over! Score: " + score, width / 2, height / 2);
+      
+      int t=millis();
+      while(millis()-t<500){
+      }
+      G=new Menu();
     }
   
     // Display score
     fill(0);
     textSize(16);
+    textAlign(LEFT, CENTER);
     text("Score: " + score, 10, 20);
   }
 }

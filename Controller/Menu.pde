@@ -32,7 +32,8 @@ class Menu implements UIScreen{
   
   void disp() { 
     background(50, 150, 200); // Light blue background 
-    textAlign(CENTER, CENTER); 
+    textAlign(CENTER, CENTER);
+    rectMode(CORNER);
     fill(255);
     textSize(32); 
     text("Arcade Menu", width / 2, 50); 

@@ -113,7 +113,7 @@ public class Filler implements Game, UIScreen{
       text((won>=1)?"YOU WON!!":"GAME OVER",width/2,height/2-25);
       textSize(16);
       text("Press ENTER to play again",width/2,height/2+10);
-      text("Press ESCAPE to exit",width/2,height/2+30);
+      text("Press BACKSPACE for menu",width/2,height/2+30);
     }
   }
   
@@ -122,8 +122,8 @@ public class Filler implements Game, UIScreen{
       if(keyPressed){
         if(key==RETURN || key==ENTER){
           generate();
-        }else if(keyCode==ESC){
-          exit();
+        }else if(keyCode==BACKSPACE){
+          G=new Menu();
         }
       }
     }else if(mousePressed){
