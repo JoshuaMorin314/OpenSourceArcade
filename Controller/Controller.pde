@@ -2,7 +2,8 @@ Game G;
 
 void setup(){
   size(600,710);
-  G=new Filler(8);
+  //G=new Filler(8);
+  G=new Asteroids();
   //G=new TicTacToe;
 }
 
