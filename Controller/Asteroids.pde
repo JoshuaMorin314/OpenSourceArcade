@@ -1,4 +1,4 @@
-class Asteroids implements Game {
+class Asteroids implements Game, UIScreen {
   PVector shipPos, shipVel;
   float shipAngle;
   boolean thrusting, turningLeft, turningRight;

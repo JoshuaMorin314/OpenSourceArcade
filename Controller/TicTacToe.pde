@@ -1,6 +1,6 @@
 // player switching has bugs
 // check doesnt work
-class TicTacToe implements Game{
+class TicTacToe implements Game, UIScreen{
   int[][] board=new int[3][3];
   int[] position=new int[3];
   int currentPlayer; // player 1 and player 2
