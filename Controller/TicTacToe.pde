@@ -44,32 +44,6 @@ class TicTacToe implements Game{
     }
   }
 
-/*
-  public boolean update(){
-    boolean success=true; // return true by default
-    
-    if((s.equals("select") || s.equals("s")) && 0==board[position[0]][position[1]]){ // if the input was select/s and the current position is available
-      board[position[0]][position[1]]=currentPlayer; // record the current players number designation at the current board position
-      position[2]++; // adds to the number of filled spots
-      currentPlayer=(currentPlayer==2)?1:2; // switch player from 1 to 2 or 2 to 1
-      if(position[2]<9){
-        computerPlayer(); // this is based off of my veeeery loose understanding of minimax but it works better than i thought i could ever accomplish
-      }
-    }else if((s.equals("up") || s.equals("u")) && position[0]!=0){ // if the input was up/u and the current position is not on the top row
-      position[0]-=1; // move the current position one spot up
-    }else if((s.equals("down") || s.equals("d")) && position[0]!=2){ // if the input was down/d and the current position is not on the bottom row
-      position[0]+=1; // move the current position one spot down
-    }else if((s.equals("left") || s.equals("l")) && position[1]!=0){ // if the input was left/l and the current position is not in the leftmost column
-      position[1]-=1; // move the current position one spot left
-    }else if((s.equals("right") || s.equals("r")) && position[1]!=2){ // if the input was right/r and the current position is not in the rightmost column
-      position[1]+=1; // move the current position one spot right
-    }else{ // if the input is unrecognised
-      success=false; // return false
-    }
-    return success; // true if the move was successful and false if it wasn't
-  }
-  */
-
   public void disp(){
     strokeWeight(5);
     noFill();
